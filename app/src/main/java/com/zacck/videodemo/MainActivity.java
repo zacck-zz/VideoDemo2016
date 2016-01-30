@@ -1,7 +1,9 @@
 package com.zacck.videodemo;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
         //get path for media
         mVideoView.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.demovideo);
+
+        //lets add controls to our video
+        MediaController mController = new MediaController(this);
+
+        //attach controller to view
+        mController.setAnchorView(mVideoView);
+
+        //attach videoview to controller
+        mVideoView.setMediaController(mController);
 
         mVideoView.start();
 
